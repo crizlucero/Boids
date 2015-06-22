@@ -1,0 +1,8 @@
+﻿<Window x:Class="Boids.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="467.949" Width="835.256">
+    <Grid>
+        <Canvas Name="BoidWorld"/>
+    </Grid>
+</Window>
