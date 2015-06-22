@@ -28,8 +28,14 @@ namespace Boids
 
         private void AddBoids()
         {
-            Boid boid = new Boid(10,20,50);
-            this.BoidWorld.Children.Add(boid.DrawBoid());
+            for (int i = 0; i < 10; i++)
+            {
+                Boid boid = new Boid(10, 20, 50);
+                this.BoidWorld.Children.Add(boid.DrawBoid(i));
+                Canvas.SetTop(this.BoidWorld.Children[i],20*i);
+                Canvas.SetLeft(this.BoidWorld.Children[i], 20 * i);
+                
+            }
         }
     }
 }
