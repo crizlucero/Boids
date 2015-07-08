@@ -13,18 +13,19 @@ namespace Boids
 {
     class Boid
     {
-        private int pX;
-        private int pY;
-        private double angle;
+        public int pX;
+        public int pY;
+        public double angle;
+        public Image image = new Image();
 
-        public Boid(int pX, int pY, double angle)
+        public Boid(int pX, int pY, double angle, int count)
         {
             this.pX = pX;
             this.pY = pY;
-            this.angle = angle;
+            this.DrawBoid(count);
         }
 
-        public Image DrawBoid(int count)
+        private void DrawBoid(int count)
         {
             BitmapImage bi = new BitmapImage();
             bi.BeginInit();
@@ -38,12 +39,21 @@ namespace Boids
                 Name = BodyName,
                 Source = bi,
             };
-           
-            return boid;
+            this.RotationBoid();
+            this.image = boid;
         }
 
-        public void MoveBoid(ref Canvas BoidWorld) {
-          
+        public void MoveBoid() {
+                    this.RotationBoid();
+        }
+
+        private void RotationBoid()
+        {
+            RotateTransform rotate = new RotateTransform();
+            rotate.Angle = this.angle;
+            rotate.CenterX = this.pX;
+            rotate.CenterY = this.pY;
+            this.image.RenderTransform = rotate;
         }
 
     }

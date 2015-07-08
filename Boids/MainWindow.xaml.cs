@@ -23,19 +23,38 @@ namespace Boids
         public MainWindow()
         {
             InitializeComponent();
-            this.AddBoids();
+            this.AddBoids();           
         }
 
         private void AddBoids()
         {
             for (int i = 0; i < 10; i++)
             {
-                Boid boid = new Boid(10, 20, 50);
-                this.BoidWorld.Children.Add(boid.DrawBoid(i));
+                Boid boid = new Boid(10, 20, 50,i);
+                this.BoidWorld.Children.Add(boid.image);
                 Canvas.SetTop(this.BoidWorld.Children[i],20*i);
                 Canvas.SetLeft(this.BoidWorld.Children[i], 20 * i);
                 
             }
+        }
+
+        public void MoveBoids()
+        {
+            for (int i = 0; i < 20; i++)
+            {
+                foreach (var boid in BoidWorld.Children)
+                {
+                    if (boid is Boid)
+                    {
+                        ((Boid)boid).MoveBoid();
+                    }
+                }
+            }
+        }
+
+        private void Empezar_Click(object sender, RoutedEventArgs e)
+        {
+            this.MoveBoids();
         }
     }
 }
